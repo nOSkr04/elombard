@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { StyleSheet } from "react-native";
+import { SWRConfig } from "swr";
+import Navigation from "./src/navigation/navigation-container";
+import useCachedResources from "./src/hooks/use-cached-resources";
 
-export default function App() {
+const App = () => {
+  const isLoadingComplete = useCachedResources();
+  if (!isLoadingComplete) {
+    return null;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SWRConfig>
+      <SafeAreaProvider>
+        <GestureHandlerRootView style={styles.gesture}>
+          <BottomSheetModalProvider>
+            <Navigation />
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
+    </SWRConfig>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
+  toast: {
+    marginBottom: 100,
+  },
+  gesture: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
+
+export default App;
