@@ -1,4 +1,5 @@
 import { IAuction } from "../interface/auction";
+import { IUser } from "../interface/user";
 
 export class Auction implements IAuction {
   _id: string;
@@ -10,6 +11,7 @@ export class Auction implements IAuction {
   isBoxed: boolean;
   imei: string;
   problems: string[];
+  players: IUser[];
 
   constructor({
     _id,
@@ -21,6 +23,7 @@ export class Auction implements IAuction {
     isBoxed,
     imei,
     problems,
+    players,
   }: IAuction) {
     this._id = _id;
     this.name = name;
@@ -31,6 +34,7 @@ export class Auction implements IAuction {
     this.isBoxed = isBoxed;
     this.imei = imei;
     this.problems = problems;
+    this.players = players;
   }
 
   static fromJson(json: IAuction) {

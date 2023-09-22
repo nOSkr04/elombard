@@ -120,6 +120,26 @@ const AuctionDetail = memo(({ route }: Props) => {
           </View>
         </View>
       </View>
+      <View style={styles.productDetail}>
+        <View style={styles.biderContainer}>
+          <BoldText style={styles.productTitle}>Тоглогчид</BoldText>
+          <View style={styles.livePriceContainer}>
+            <SemiBoldText>{priceBrief(item.livePrice)}</SemiBoldText>
+            <ThinText>Хамгийн өндөр дүн</ThinText>
+          </View>
+        </View>
+        {item.players?.map((player) => {
+          return (
+            <View style={styles.biderPlayer}>
+              <View>
+                <SemiBoldText>{player.price}</SemiBoldText>
+                <MediumText>{player.name}</MediumText>
+              </View>
+              <MediumText>{player.registered}</MediumText>
+            </View>
+          );
+        })}
+      </View>
     </ScrollView>
   );
 });
@@ -189,7 +209,6 @@ const styles = StyleSheet.create({
   },
   productTitle: {
     fontSize: 16,
-    marginTop: 16,
   },
   productRow: {
     flexDirection: "row",
@@ -209,5 +228,16 @@ const styles = StyleSheet.create({
   },
   answerContainer: {
     flex: 0.5,
+  },
+  biderContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  livePriceContainer: {
+    alignItems: "center",
+  },
+  biderPlayer: {
+    flexDirection: "row",
   },
 });
