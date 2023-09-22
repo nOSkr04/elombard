@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "shared",
+    "name": "e-lombard",
     "slug": "shared",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tselmen.shared"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5d442dc5-ccef-4410-8b90-67d4528cca20"
+      }
     }
   }
 }
