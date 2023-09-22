@@ -11,7 +11,11 @@ export class Auction implements IAuction {
   isBoxed: boolean;
   imei: string;
   problems: string[];
-  players: IUser[];
+  players: {
+    name: string;
+    avatar: string;
+    price: string;
+  };
 
   constructor({
     _id,
